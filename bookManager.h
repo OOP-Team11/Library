@@ -6,7 +6,7 @@ using namespace std;
 
 class BookManager {
 private:
-	int bookCount; // 0으로 초기화
+	int bookCount; // 0으로 초기화 0,1,2,4
 	vector<Book> books;
 
 	// 실제 내부 작동 functions

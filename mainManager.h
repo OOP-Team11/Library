@@ -26,7 +26,9 @@ public:
 
 	// 도서 관련
 	void setBooks();
+	// void printAllBooks();
 
 	// 대출 관련
 	void setLoans();
+	// 
 };

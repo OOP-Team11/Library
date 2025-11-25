@@ -15,7 +15,7 @@ private:
 public:
 	// constructor
 	Loan();
-	Loan(int id, int bookId, int memberId, string startdate, string enddate); // 파일 읽을때 (.txt 파일이라 string으로 읽게됨)
+	//Loan(int id, int bookId, int memberId, string startdate, string enddate); // 파일 읽을때 (.txt 파일이라 string으로 읽게됨)
 	Loan(int id, int bookId, int memberId, sys_days startdate, sys_days enddate); // 대출시
 
 	// getter

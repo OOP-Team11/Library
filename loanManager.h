@@ -7,7 +7,7 @@ using namespace std;
 
 class LoanManager {
 private:
-	int loanCount;
+	int loanCount; // 1로 초기화. 무조건 증가만. txt 파일에서 읽을때는 '제일 큰 id' 가 Count 변수가 됨.
 	vector<Loan> loans;
 
 	// 실제 내부 작동 functions
