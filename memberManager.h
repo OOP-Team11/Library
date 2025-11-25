@@ -33,7 +33,7 @@ public:
 	void save(string filename);
 
 	// 외부 기능 functions
-	void join(string name, string password); // 회원 가입. join에서 Member()생성자 이용해서 생성하고(memberManager에 memberCount 이용해서 id 하면 됨) -> 위의 addMember로 추가하기.
+	bool join(string name, string password); // 회원 가입. join에서 Member()생성자 이용해서 생성하고(memberManager에 memberCount 이용해서 id 하면 됨) -> 위의 addMember로 추가하기.
 	int login(string name, string password); // 로그인 -> memberId 반환
 	vector<Member> getAllMembers() const; // 모든 회원 조회 -> 근데 필요할까 싶긴함
 	void deleteMember(int memberId, int yourId); // 회원 삭제 + yourId는 명령 실행하는 사용자 권한 체크용
