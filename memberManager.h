@@ -23,19 +23,20 @@ private:
 	void addMember(const Member& member); // txt 파일에서 읽어서 추가 or 회원가입 시
 	bool removeMember(int id); // 삭제 성공했으면 true
 
+
 public:
 	// constructor
 	MemberManager(); // memberCount = 0 으로 초기화 해야함.
-	// MemberManager(string filename);
+	MemberManager(string filename);
 
 	// 내부 기능 functions
-	Member* findMember(int id); // 포인터 반환 -> 없으면 nullptr
+	vector<Member>:: iterator findMember(int id); // 포인터 반환 -> 없으면 nullptr
 	void save(string filename);
 
 	// 외부 기능 functions
 	bool join(string name, string password); // 회원 가입. join에서 Member()생성자 이용해서 생성하고(memberManager에 memberCount 이용해서 id 하면 됨) -> 위의 addMember로 추가하기.
 	int login(string name, string password); // 로그인 -> memberId 반환
 	vector<Member> getAllMembers() const; // 모든 회원 조회 -> 근데 필요할까 싶긴함
-	void deleteMember(int memberId, int yourId); // 회원 삭제 + yourId는 명령 실행하는 사용자 권한 체크용
+	void deleteMember(int id); // 회원 탈퇴
 
 };
