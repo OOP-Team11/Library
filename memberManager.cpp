@@ -49,16 +49,16 @@ vector<Member>::iterator MemberManager::findMember(int id) {
 void MemberManager::save(string filename) {
 
 }
-/* 회원가입 메소드. name과 pw 받아 member생성하고, id 받아서 push_back.*/
+/* 회원가입 메소드. name과 pw 받아 member생성하고, id 받아서 push_back. 이름이 유니크해야 함. */
 bool MemberManager::join(string name, string password) {
-	// 먼저 password가 유니크한지 검사, 실패 시 바로 false 리턴
+	// 먼저 이름이 유니크한지 검사, 실패 시 바로 false 리턴
 	vector<Member>::iterator it = members.begin();
 	for (; it != members.end(); it++) {
-		if (it->getPassword() == password) {
+		if (it->getName() == name) {
 			return false;
 		}
 	}
-	// 비밀번호가 unique하면 회원가입 가능, 가입 및 true 리턴
+	// 아이디가 unique하면 회원가입 가능, 가입 및 true 리턴
 
 	// User로 회원가입 되도록.
 	Member newMember = Member(this->memberCount, name, password);
@@ -66,8 +66,6 @@ bool MemberManager::join(string name, string password) {
 	(this->memberCount)++;
 	return true;
 	
-
-
 }
 /* 로그인 기능. 이름과 패스워드가 일치하는 멤버가 있다면 id반환. 로그인 실패 시 -1 리턴.*/
 int MemberManager::login(string name, string password) {

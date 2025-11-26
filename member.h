@@ -7,8 +7,8 @@ class Member {
 private:
 	int id;
 	Role role;
-	string name;
-	string password; // unique 해야함. 회원가입할 때 unique 처리
+	string name; // 네임이 유니크하도록 변경
+	string password;
 	int score; // 반납 기한 연체시 점수 깎는 기능 대비
 
 public:
