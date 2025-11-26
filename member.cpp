@@ -12,6 +12,11 @@
 
 // contructor
 Member::Member(){
+	id = 0;
+	role = Role::User;
+	name = "";
+	password = "";
+	score = 0;
 }
 /* role 선택 회원가입 기능 */
 Member::Member(int id, const string& name, const string& password, Role role){

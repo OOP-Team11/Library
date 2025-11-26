@@ -51,12 +51,23 @@ void MemberManager::save(string filename) {
 }
 /* 회원가입 메소드. name과 pw 받아 member생성하고, id 받아서 push_back.*/
 bool MemberManager::join(string name, string password) {
+	// 먼저 password가 유니크한지 검사, 실패 시 바로 false 리턴
+	vector<Member>::iterator it = members.begin();
+	for (; it != members.end(); it++) {
+		if (it->getPassword() == password) {
+			return false;
+		}
+	}
+	// 비밀번호가 unique하면 회원가입 가능, 가입 및 true 리턴
+
 	// User로 회원가입 되도록.
 	Member newMember = Member(this->memberCount, name, password);
 	members.push_back(newMember);
-	// 추가된 멤버가 검색 가능하다면 가입이 제대로 됐다는 소리.
-	if (findMember(memberCount) != members.end()) return true;
-	else return false;
+	(this->memberCount)++;
+	return true;
+	
+
+
 }
 /* 로그인 기능. 이름과 패스워드가 일치하는 멤버가 있다면 id반환. 로그인 실패 시 -1 리턴.*/
 int MemberManager::login(string name, string password) {
@@ -75,7 +86,7 @@ int MemberManager::login(string name, string password) {
 
 }
 /* 모든 멤버 목록 리턴 */
-vector<Member> MemberManager::getAllMembers() const {
+const vector<Member>& MemberManager::getAllMembers() const {
 	return members;
 }
 
