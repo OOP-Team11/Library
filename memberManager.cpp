@@ -28,8 +28,51 @@ MemberManager::MemberManager() {
 }
 
 /* 파일 이름 받아와 멤버 정보 불러오는 생성자. memberCount 주의. 항상 다음에 추가될 멤버의 id를 가지도록. */
+// MemberManager.cpp
+
+// ----------------------------------------------
+// Constructor: file에서 읽어서 초기화
+// ----------------------------------------------
 MemberManager::MemberManager(string filename) {
 
+	int id;
+	ifstream in(filename);
+	if (!in.is_open()) {
+		cerr << "파일을 열 수 없습니다: " << filename << endl;
+		return;
+	}
+
+	string line;
+	while (getline(in, line)) {
+		if (line.empty()) continue;
+
+		stringstream ss(line);
+		string idStr, roleStr, name, password, scoreStr;
+		// 파일 형식: id,role,name,pw,score
+		getline(ss, idStr, ',');
+		getline(ss, roleStr, ',');
+		getline(ss, name, ',');
+		getline(ss, password, ',');
+		getline(ss, scoreStr, ',');
+
+		// 텍스트 → C++ 자료형 변환
+		id = stoi(idStr);
+		int score = stoi(scoreStr);
+
+		// Role 변환
+		Role role;
+		if (roleStr == "Admin") role = Role::Admin;
+		else role = Role::User;   // 기본값: User
+
+		// Member 생성 후 스코어 저장
+		Member m(id, name, password, role);
+		m.setScore(score);
+
+		addMember(m);
+	}
+
+	memberCount = id + 1; // 멤버카운트는 마지막에 읽은 멤버 id에 +1
+	in.close();
 }
 
 /* 
@@ -47,7 +90,22 @@ vector<Member>::iterator MemberManager::findMember(int id) {
 }
 /* 파일을 불러와 멤버변수 members에 저장. */
 void MemberManager::save(string filename) {
+	ofstream out(filename);
+	if (!out.is_open()) {
+		cerr << "파일 저장 실패: " << filename << endl;
+		return;
+	}
 
+	for (auto& m : members) {
+		out << m.getId() << ","
+			<< (m.isAdmin() ? "Admin" : "User") << ","
+			<< m.getName() << ","
+			<< m.getPassword() << ","
+			<< m.getScore()
+			<< "\n";
+	}
+
+	out.close();
 }
 /* 회원가입 메소드. name과 pw 받아 member생성하고, id 받아서 push_back. 이름이 유니크해야 함. */
 bool MemberManager::join(string name, string password) {
@@ -89,6 +147,6 @@ const vector<Member>& MemberManager::getAllMembers() const {
 }
 
 /* 회원 탈퇴 기능. 어딘가에서 getCurrentUser() 같은 걸로 현재 로그인한 사용자 정보 받아와야 함. */
-void MemberManager::deleteMember(int id) {
-	removeMember(id);
+bool MemberManager::deleteMember(int id) {
+	return removeMember(id);
 }
