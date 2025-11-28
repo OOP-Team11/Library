@@ -79,7 +79,7 @@ MemberManager::MemberManager(string filename) {
 특정 id를 가진 멤버를 찾아 iterator 타입으로 반환함.
 실패한 경우 members.end()가 반환됨.
 */
-vector<Member>::iterator MemberManager::findMember(int id) {
+const vector<Member>::iterator MemberManager::findMember(int id) {
 	vector<Member>::iterator it = members.begin();
 	for (; it != members.end(); it++) {
 		if ((it->getId()) == id) {
@@ -125,8 +125,8 @@ bool MemberManager::join(string name, string password) {
 	return true;
 	
 }
-/* 로그인 기능. 이름과 패스워드가 일치하는 멤버가 있다면 id반환. 로그인 실패 시 -1 리턴.*/
-int MemberManager::login(string name, string password) {
+/* 로그인 기능. 이름과 패스워드가 일치하는 멤버가 있다면 멤버 객체를 반환. 로그인 실패 시 nullptr 리턴.*/
+const Member* MemberManager::login(string name, string password) {
 	vector<Member>::iterator it = members.begin();
 	for (; it != members.end(); it++) {
 		if ((it->getName() == name) && (it->getPassword() == password)) {
@@ -134,12 +134,11 @@ int MemberManager::login(string name, string password) {
 		}
 	}
 	// 로그인 실패
-	if (it == members.end()) return -1;
+	if (it == members.end()) return nullptr;
 	// 로그인 성공
 	else {
-		return it->getId();
+		return &(*it);
 	}
-
 }
 /* 모든 멤버 목록 리턴 */
 const vector<Member>& MemberManager::getAllMembers() const {
