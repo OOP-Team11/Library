@@ -14,8 +14,8 @@ private:
 public:
 	// constructor
 	Book();
-	Book(int id, string name, string writer, BookCategory category); // isLoanÀº false·Î ÃÊ±âÈ­.
-	Book(int id, string name, string writer); // Ä«Å×°í¸® ÁöÁ¤ ±ÍÂúÀ»¶§ ±×³É ´Ù 000À¸·Î µÇµµ·Ï ÇÏ³ª ¸¸µé±â
+	Book(int id, string name, string writer, BookCategory category); // isLoanï¿½ï¿½ falseï¿½ï¿½ ï¿½Ê±ï¿½È­.
+	Book(int id, string name, string writer); // Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ 000ï¿½ï¿½ï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	// getter
 	int getId() const;
@@ -28,8 +28,8 @@ public:
 	void setName(string name);
 	void setWriter(string writer);
 	void setCategory(BookCategory category);
-	void setIsLoan(); // ½ÇÇà µÉ¶§ true¸é false, false¸é true ·Î switch ±â´É ÇÏµµ·Ï.
+	void setIsLoan(); // ï¿½ï¿½ï¿½ï¿½ ï¿½É¶ï¿½ trueï¿½ï¿½ false, falseï¿½ï¿½ true ï¿½ï¿½ switch ï¿½ï¿½ï¿½ ï¿½Ïµï¿½ï¿½ï¿½.
 
 	// functions
-	bool isLoan() const; // À§¿¡ getIsLoanÀÌ¶û °ãÄ¡±ä ÇÏ´Âµ¥ È¤½Ã ¸ô¶ó¼­ ÀÏ´Ü Àû¾îµÒ.
+	bool isLoan() const; // ï¿½ï¿½ï¿½ï¿½ getIsLoanï¿½Ì¶ï¿½ ï¿½ï¿½Ä¡ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 };

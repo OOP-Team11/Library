@@ -9,14 +9,14 @@ private:
 	int id;
 	int bookId;
 	int memberId;
-	sys_days startdate; // ÁöÇÇÆ¼ÇÑÅ× chrono ¹°¾îº¸±â. ¿À´Ã ±âÁØÀ¸·Î ³¯Â¥ »ı¼º ¹× ³¯Â¥ ´õÇÏ±â, ³¯Â¥ ºñ±³ ´Ù Áö¿øÇØÁÜ.
-	sys_days enddate; 
+	sys_days startdate; // ì§€í”¼í‹°í•œí…Œ chrono ë¬¼ì–´ë³´ê¸°. ì˜¤ëŠ˜ ê¸°ì¤€ìœ¼ë¡œ ë‚ ì§œ ìƒì„± ë° ë‚ ì§œ ë”í•˜ê¸°, ë‚ ì§œ ë¹„êµ ë‹¤ ì§€ì›í•´ì¤Œ.
+	sys_days enddate;
 
 public:
 	// constructor
 	Loan();
-	//Loan(int id, int bookId, int memberId, string startdate, string enddate); // ÆÄÀÏ ÀĞÀ»¶§ (.txt ÆÄÀÏÀÌ¶ó stringÀ¸·Î ÀĞ°ÔµÊ)
-	Loan(int id, int bookId, int memberId, sys_days startdate, sys_days enddate); // ´ëÃâ½Ã
+	Loan(int id, int bookId, int memberId, string startdate, string enddate); // íŒŒì¼ ì½ì„ë•Œ (.txt íŒŒì¼ì´ë¼ stringìœ¼ë¡œ ì½ê²Œë¨)
+	Loan(int id, int bookId, int memberId, sys_days startdate, sys_days enddate); // ëŒ€ì¶œì‹œ
 
 	// getter
 	int getId() const;
@@ -26,8 +26,8 @@ public:
 	sys_days getEndDate() const;
 
 	// setter
-	void setEndDate() const; // ¿¬ÀåÇÒ ¶§ »ç¿ë.
+	void extendEndDate(); // ì—°ì¥í•  ë•Œ ì‚¬ìš©.
 
 	// function
-	bool isExpired(); // ¹İ³³ÀÏ Áö³µ´Â Áö.
+	bool isExpired(); // ë°˜ë‚©ì¼ ì§€ë‚¬ëŠ” ì§€.
 };
