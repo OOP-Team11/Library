@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "book.h"
 #include <string>
 #include <vector>
@@ -6,26 +6,28 @@ using namespace std;
 
 class BookManager {
 private:
-	int bookCount; // 0À¸·Î ÃÊ±âÈ­ 0,1,2,4
+	int bookCount; // 0ìœ¼ë¡œ ì´ˆê¸°í™” 0,1,2,4
 	vector<Book> books;
+	string lastLoadedFilename; // ì €ì¥í•  íŒŒì¼ëª…
 
-	// ½ÇÁ¦ ³»ºÎ ÀÛµ¿ functions
-	void addBook(const Book& book); // txt ÆÄÀÏ¿¡¼­ ÀĞ¾î¼­ Ãß°¡ or Ã¥ µî·Ï ½Ã
-	bool removeBook(int id); // »èÁ¦ ¼º°øÇÏ¸é true
+	// ì‹¤ì œ ë‚´ë¶€ ì‘ë™ functions
+	void addBook(const Book& book); // txt íŒŒì¼ì—ì„œ ì½ì–´ì„œ ì¶”ê°€ or ì±… ë“±ë¡ ì‹œ
+	bool removeBook(int id); // ì‚­ì œ ì„±ê³µí•˜ë©´ true
 
 public:
 	// constructor
-	BookManager(); // memberCount = 0 À¸·Î ÃÊ±âÈ­ ÇØ¾ßÇÔ.
-	BookManager(string filename); // txt ÆÄÀÏ ºÒ·¯ÀĞ±â¿ë
+	BookManager(); // memberCount = 0 ìœ¼ë¡œ ì´ˆê¸°í™” í•´ì•¼í•¨.
+	BookManager(string filename); // txt íŒŒì¼ ë¶ˆëŸ¬ì½ê¸°ìš©
+	~BookManager(); // Deallocation (ì†Œë©¸ì): ê°ì²´ ì†Œë©¸ ì‹œ íŒŒì¼ ì €ì¥
 
-	// ³»ºÎ ±â´É functions
-	Book* findBook(int id); // Æ÷ÀÎÅÍ ¹İÈ¯ -> ¾øÀ¸¸é nullptr
-	void save(string filename); // ÆÄÀÏ ÀúÀå¿ë
+	// ë‚´ë¶€ ê¸°ëŠ¥ functions
+	vector<Book>::iterator findBook(int id);
+	void save(string filename); 
 
-	// ¿ÜºÎ ±â´É functions
-	void insertBook(string name, string password); // µµ¼­ µî·Ï : ¿©±â¼­ ±ÇÇÑ °Ë»ç, bookCount ÅëÇØ Book() »ı¼º -> addBook À¸·Î DB¿¡ Ãß°¡
-	vector<Book> getAllBooks() const; // µµ¼­ Á¶È¸(ÀüÃ¼)
-	vector<Book> searchBook(string name, string writer) const; // µµ¼­ °Ë»ö (Ã¥ ÀÌ¸§, ÀÛ°¡ ÀÌ¸§), findBook ÀÌ¿ëÇÏ±â
-	void deleteBook(int bookId, int yourId); // µµ¼­ »èÁ¦ + yourId´Â ¸í·É ½ÇÇàÇÏ´Â »ç¿ëÀÚ ±ÇÇÑ Ã¼Å©¿ë
+	// ì™¸ë¶€ ê¸°ëŠ¥ functions
+	void insertBook(string name, string writer); // ë„ì„œ ë“±ë¡ : bookCount í†µí•´ Book() ìƒì„± -> addBook ìœ¼ë¡œ DBì— ì¶”ê°€
+	vector<Book> getAllBooks() const; // ë„ì„œ ì¡°íšŒ(ì „ì²´)
+	vector<Book> searchBook(string name, string writer) const; // ë„ì„œ ê²€ìƒ‰ (ì±… ì´ë¦„, ì‘ê°€ ì´ë¦„), findBook ì´ìš©í•˜ê¸°
+	void deleteBook(int bookId, int yourId); // ë„ì„œ ì‚­ì œ + yourIdëŠ” ëª…ë ¹ ì‹¤í–‰í•˜ëŠ” ì‚¬ìš©ì ê¶Œí•œ ì²´í¬ìš©
 
 };

@@ -1,6 +1,5 @@
-// main Å×½ºÆ®¿ë
-#include <iostream>
-// #include <memberManager.h> ...
+ï»¿#include <iostream>
+
 using namespace std;
 
 int main() {

@@ -141,11 +141,18 @@
   <ItemGroup>
     <ClCompile Include="book.cpp" />
     <ClCompile Include="bookManager.cpp" />
-    <ClCompile Include="loan.cpp" />
+    <ClCompile Include="loan.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="loanManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="member.cpp" />
+    <ClCompile Include="member.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="memberManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="books.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

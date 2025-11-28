@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "bookCategory.h"
 #include <string>
 using namespace std;
@@ -14,8 +14,8 @@ private:
 public:
 	// constructor
 	Book();
-	Book(int id, string name, string writer, BookCategory category); // isLoanÀº false·Î ÃÊ±âÈ­.
-	Book(int id, string name, string writer); // Ä«Å×°í¸® ÁöÁ¤ ±ÍÂúÀ»¶§ ±×³É ´Ù 000À¸·Î µÇµµ·Ï ÇÏ³ª ¸¸µé±â
+	Book(int id, string name, string writer, BookCategory category); // isLoanì€ falseë¡œ ì´ˆê¸°í™”.
+	Book(int id, string name, string writer); // ì¹´í…Œê³ ë¦¬ ì§€ì • ê·€ì°®ì„ë•Œ ê·¸ëƒ¥ ë‹¤ 000ìœ¼ë¡œ ë˜ë„ë¡ í•˜ë‚˜ ë§Œë“¤ê¸°
 
 	// getter
 	int getId() const;
@@ -28,8 +28,8 @@ public:
 	void setName(string name);
 	void setWriter(string writer);
 	void setCategory(BookCategory category);
-	void setIsLoan(); // ½ÇÇà µÉ¶§ true¸é false, false¸é true ·Î switch ±â´É ÇÏµµ·Ï.
+	void setIsLoan(); // ì‹¤í–‰ ë ë•Œ trueë©´ false, falseë©´ true ë¡œ switch ê¸°ëŠ¥ í•˜ë„ë¡.
 
 	// functions
-	bool isLoan() const; // À§¿¡ getIsLoanÀÌ¶û °ãÄ¡±ä ÇÏ´Âµ¥ È¤½Ã ¸ô¶ó¼­ ÀÏ´Ü Àû¾îµÒ.
+	bool checkLoan() const; // ìœ„ì— getIsLoanì´ë‘ ê²¹ì¹˜ê¸´ í•˜ëŠ”ë° í˜¹ì‹œ ëª°ë¼ì„œ ì¼ë‹¨ ì ì–´ë‘ .
 };
